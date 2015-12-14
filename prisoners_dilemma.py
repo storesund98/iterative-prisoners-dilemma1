@@ -531,19 +531,19 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
         else:
             if len(opponent_history)==0: #It's the first round: collude
                 return 'c'
-            elif opponent_history[-1]=='b' and opponent_history[-2]=='b' and opponent_history[-3]=='b':
-                return 'b'
-            elif opponent_history[-1]=='c' and opponent_history[-2]=='b' and opponent_history[-3]=='c':
-                return 'b'
-            elif opponent_history[-1]=='c' and opponent_history[-2]=='c' and opponent_history[-3]=='c':
-                return 'b'
+            elif len(opponent_history)>=3: #Opponent has had 3 rounds
+                if opponent_history[-1]=='b' and opponent_history[-2]=='b' and opponent_history[-3]=='b':
+                    return 'b'
+                elif opponent_history[-1]=='c' and opponent_history[-2]=='b' and opponent_history[-3]=='c':
+                    return 'b'
+                elif opponent_history[-1]=='c' and opponent_history[-2]=='c' and opponent_history[-3]=='c':
+                    return 'b'
+                elif opponent_history[-1]=='b' and opponent_history[-2]=='c' and opponent_history[-3]=='b':
+                    return 'b'
+                elif opponent_history[-1]=='c' and opponent_history[-2]=='b' and opponent_history[-3]=='c':
+                    return 'b'
             else:
-                return 'c'
-    
-
-
-
-
+                return random.choice('c' 'b')
     ######
     ######
     #
